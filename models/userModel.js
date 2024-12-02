@@ -11,8 +11,6 @@ const UserSchema = new mongoose.Schema({
     required: true, 
     enum: ['Admin', 'Manager', 'User'], // Allowed roles
   },
-  is2FAEnabled: { type: Boolean, default: false }, // Indicates if 2FA is enabled
-  twoFactorSecret: String, // Stores the secret for 2FA (if enabled)
 });
 
 // Create the model from the schema
