@@ -1,20 +1,20 @@
-// Import mongoose for schema definition
-const mongoose = require('mongoose');
+const mongoose=require('mongoose')
 
-// Define the schema for user data
 const UserSchema = new mongoose.Schema({
-  name: { type: String, required: true }, // User's name, required field
-  password: { type: String, required: true }, // User's password, required field
-  email: { type: String, required: true, unique: true }, // User's unique email, required field
+  name: { type: String, required: true },
+  password: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
   role: { 
     type: String, 
     required: true, 
-    enum: ['Admin', 'Manager', 'User'], // Allowed roles
+    enum: ['Admin', 'Manager', 'User'], 
   },
+  permissions: { 
+    type: Map, 
+    of: Boolean, 
+    default: { read: false, update: false, delete: false }, 
+  }, // Permissions as a flexible map
 });
 
-// Create the model from the schema
 const EndUser = mongoose.model('EndUser', UserSchema);
-
-// Export the model for use in other files
 module.exports = EndUser;

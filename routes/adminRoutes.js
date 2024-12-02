@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { verifyToken } = require('../middleware/authMiddleware');
-const { verifyRole } = require('../middleware/roleMiddleware');  // Admin role check
-const { adminDashboard } = require('../controllers/adminController');
+const { grantPermissions } = require('../controllers/grantPermission');
+const { verifyToken } = require('../middlewares/authMiddleware');
 
-router.get('/admin-dashboard', verifyToken, verifyRole('Admin'), adminDashboard);
+// Grant additional permissions to a user
+router.post('/grant-permissions',verifyToken , grantPermissions);
 
 module.exports = router;

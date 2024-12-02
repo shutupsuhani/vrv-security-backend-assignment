@@ -35,6 +35,7 @@ router.post('/register', async (req, res) => {
       email,
       password: hashedPassword,
       role,
+      dateJoined
     });
 
     // Save the new user to the database
@@ -72,7 +73,7 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign(
       { userId: user._id, role: user.role }, 
       process.env.JWT_SECRET, 
-      { expiresIn: '1h' } // Token expires in 1 hour
+      { expiresIn: '1d' } // Token expires in 1 hour
     );
 
     // Respond with success message and the generated token

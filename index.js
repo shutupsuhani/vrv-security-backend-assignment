@@ -5,6 +5,7 @@ const mongoose =require('mongoose');
 const dotenv =require('dotenv');
 const authRoutes =require('./routes/authRoutes.js');
 const profileRoutes=require('./routes/profileRoutes.js');
+const adminRoutes=require('./routes/adminRoutes.js')
 dotenv.config(); 
 
 const app = express();
@@ -20,6 +21,7 @@ mongoose
 
  app.use('/auth',authRoutes) 
  app.use('/profile',profileRoutes)
+ app.use('/admin',adminRoutes)
 // Set the port
 const port = process.env.PORT || 3000; 
 
