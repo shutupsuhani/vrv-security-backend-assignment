@@ -12,7 +12,7 @@ const registerValidator = ({ name, email, password, role }) => {
       return 'Password must be at least 6 characters long';
     }
   
-    const allowedRoles = ['Admin', 'Sub Admin', 'User', 'Editor'];
+    const allowedRoles = ['Admin', 'Manager', 'User'];
     if (!allowedRoles.includes(role)) {
       return 'Invalid role';
     }
